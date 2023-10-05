@@ -98,7 +98,7 @@ describe('Sprint Challenge 5', () => {
         expect(lis.length).toBe(ids.length)
       })
     })
-    test('👉 [14] <li>s inside each card display the correct mentor names', async () => {
+    test('👉 [14] <li>s inside each card contain the correct mentor names', async () => {
       await firstCardRender()
       const unorderedLists = document.querySelectorAll('.card ul')
       unorderedLists.forEach((ul, idx) => {
@@ -131,16 +131,7 @@ describe('Sprint Challenge 5', () => {
       fireEvent.click(card)
       expect(card.classList.contains('selected')).toBe(false)
     })
-    test('👉 [17] <h3> selecting a card causes the learner ID to display next to the name', async () => {
-      await firstCardRender()
-      const card = document.querySelector('.card:nth-child(1)')
-      expect(within(card).queryByText('Bob Johnson, ID 6')).not.toBeInTheDocument()
-      fireEvent.click(card)
-      expect(within(card).queryByText('Bob Johnson, ID 6')).toBeInTheDocument()
-      fireEvent.click(card)
-      expect(within(card).queryByText('Bob Johnson, ID 6')).not.toBeInTheDocument()
-    })
-    test('👉 [18] <p class="info"> selecting a card displays the text "The selected learner is <name>"', async () => {
+    test('👉 [17] <p class="info"> selecting a card displays the text "The selected learner is <name>"', async () => {
       await firstCardRender()
       const card1 = document.querySelector('.card:nth-child(1)')
       const card2 = document.querySelector('.card:nth-child(2)')
@@ -154,14 +145,14 @@ describe('Sprint Challenge 5', () => {
       expect(screen.queryByText('The selected learner is Samantha Richards')).not.toBeInTheDocument()
       expect(screen.queryByText('The selected learner is Harry Potter')).toBeVisible()
     })
-    test('👉 [19] <p class="info"> de-selecting all cards displays the text "No learner is selected"', async () => {
+    test('👉 [18] <p class="info"> de-selecting all cards displays the text "No learner is selected"', async () => {
       await firstCardRender()
       const card = document.querySelector('.card:nth-child(1)')
       fireEvent.click(card)
       fireEvent.click(card)
       expect(screen.queryByText('No learner is selected')).toBeVisible()
     })
-    test('👉 [20] <div class="card"> clicking on a card de-selects any other card that may be selected', async () => {
+    test('👉 [19] <div class="card"> clicking on a card de-selects any other card that may be selected', async () => {
       await firstCardRender()
       const card1 = document.querySelector('.card:nth-child(1)')
       const card2 = document.querySelector('.card:nth-child(2)')
@@ -170,13 +161,20 @@ describe('Sprint Challenge 5', () => {
       fireEvent.click(card2)
       expect(card1.classList.contains('selected')).toBe(false)
       expect(card2.classList.contains('selected')).toBe(true)
-      expect(within(card1).queryByText('Bob Johnson, ID 6')).not.toBeInTheDocument()
-      expect(within(card2).queryByText('Samantha Richards, ID 52')).toBeInTheDocument()
       fireEvent.click(card3)
       expect(card2.classList.contains('selected')).toBe(false)
       expect(card3.classList.contains('selected')).toBe(true)
-      expect(within(card2).queryByText('Samantha Richards, ID 52')).not.toBeInTheDocument()
-      expect(within(card3).queryByText('Harry Potter, ID 84')).toBeInTheDocument()
+    })
+  })
+  describe('Optional goals', () => {
+    test('👉 [20] <h3> selecting a card causes the learner ID to display next to the name', async () => {
+      await firstCardRender()
+      const card = document.querySelector('.card:nth-child(1)')
+      expect(within(card).queryByText('Bob Johnson, ID 6')).not.toBeInTheDocument()
+      fireEvent.click(card)
+      expect(within(card).queryByText('Bob Johnson, ID 6')).toBeInTheDocument()
+      fireEvent.click(card)
+      expect(within(card).queryByText('Bob Johnson, ID 6')).not.toBeInTheDocument()
     })
     test('👉 [21] <h4 class="open"> clicking on "Mentors" heading toggles visibility of list of mentors', async () => {
       // Repeatedly clicking on the h4 of a card causes the unordered list of mentors to switch

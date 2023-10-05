@@ -131,11 +131,16 @@ Once you have the data in the right shape, you can **create a component function
 
 Make sure that each element you create uses the **exact same class names and text contents** as those in the design! Also, render the learners **in the same order** as they arrive from Endpoint A.
 
-As for interactivity, all the behaviors on the page as the user clicks on the cards boil down to **changes in text contents of some elements, and changes to some class names** which can be observed in the [mock](https://w-s5-challenge.herokuapp.com/). Do not use any other mechanisms! Do not use inline styles!
-
-It might seem like you need several click handlers on different elements inside the card, but that would just make the code more complicated. Remember, events bubble up from the target to its ancestor elements! It's easier to just attach an event listener on the card element, and then **check who the target of the click is before taking the appropriate action**.
+As for [interactivity](https://w-s5-challenge.herokuapp.com/), when a card is selected, any other card becomes unselected. The newly selected card acquires a class of "selected", and the info message at the top of the page changes. When de-selecting a card, you must remove the class of "selected" from it, and change the message at the top of the page back to "No learner is selected".
 
 ❗ Only make changes to the `frontend/index.js` file.
+
+❗ Only change texts and class names! Do not use inline styles for the challenge
+
+❗ **OPTIONAL GOALS (Not required to obtain full marks for the challenge):**
+
+- Make the selected card show the ID of the learner next to their name.
+- Make the mentors list expand and collapse like in the mock.
 
 Reach out if you get too stuck, and have fun!
 
