@@ -21,8 +21,7 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
                   },
                 etc]
             * Loop over the array holding the formatted data
-                * For each object, make a `div.card` with all its children elements
-                * For each mentor name within each object, populate the `ul` inside the card
+                * For each object, make a `div.card` with all its children elements, put it in the DOM
                 * Add a click handler to the `div.card` that activates it and deactivates it
 
     Have fun!
