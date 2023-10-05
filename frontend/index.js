@@ -35,6 +35,7 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
         * Make the mentors list expand and collapse like in the mock
         * Make the selected card show the learner ID next to their name
   */
+
   // fetching the data
   const learnersRes = await axios.get('http://localhost:3003/api/learners')
   const mentorsRes = await axios.get('http://localhost:3003/api/mentors')
