@@ -6,6 +6,7 @@ const { learners, mentors } = require('./backend/data')
 const { sprintChallenge5 } = require('./frontend/index')
 
 const waitForOptions = { timeout: 150 } // so Codegrade does not take forever
+const queryOptions = { exact: false }
 
 beforeAll(() => { server.listen() })
 afterAll(() => { server.close() })
@@ -26,7 +27,7 @@ beforeEach(async () => {
 })
 
 async function firstCardRender() {
-  const bob = await screen.findByText('Bob Johnson', {}, waitForOptions)
+  const bob = await screen.findByText('Bob Johnson', queryOptions, waitForOptions)
   expect(bob).toBeInTheDocument()
 }
 
