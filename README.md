@@ -12,22 +12,6 @@ Here's an overview of the tasks you need to complete:
 1. **Combine** data obtained from different sources into a single data structure.
 1. **Render** repeatable components to the DOM using the combined data.
 
-To succeed in this challenge, you'll need the following technical skills:
-
-1. **Promises** and the ability to deal with asynchronous code.
-1. **Making HTTP requests** with Axios or fetch.
-1. **Looping over data** to populate a new data structure.
-1. **Selecting elements** and groups of elements from the DOM.
-1. **Creating new elements** and attaching them to the DOM.
-1. **Altering the text content** and class names of elements based on certain events.
-1. **Adding simple interactivity** to elements via event listeners.
-
-Additionally, the following soft skills will greatly impact your performance:
-
-1. Attention to detail. Make sure there isn't a single character out of place!
-1. Perseverance. Keep trying until you figure it out!
-1. Patience. Make sure to read the entire README for important information.
-
 ## Instructions
 
 On your first day as a junior web developer at a coding school, you have been assigned a ticket to complete. The task involves adding a new feature to the school's software platform.
@@ -47,7 +31,7 @@ To help you complete the task, several members of your team will provide you wit
 
 This is a **full-stack web application** that comprises both back-end and front-end components. If deployed to production, the back-end part would run in the cloud (think Amazon Web Services or Azure), while the front-end would execute inside the user's web browser (like Chrome for Android, or Firefox for desktop).
 
-As a front-end engineer, your focus is mainly on the files that load **on the user's device**. In this particular case, these files live inside the `frontent` folder. The `backend` folder contains a web server built in Node, but the project as a whole is managed as a Node application. As such, it contains a `package.json` file at the root, containing some meta-information like name and version, and a few useful scripts developers can use as they work on the app, like "npm test".
+As a front-end engineer, your focus is mainly on the files that load **on the user's device**. In this particular case, these files live inside the `frontend` folder. The `backend` folder contains a web server built in Node, but the project as a whole is managed as a Node application. As such, it contains a `package.json` file at the root, containing some meta-information like name and version, and a few useful scripts developers can use as they work on the app, like "npm test".
 
 1. You will **clone this repository** to your computer, which will allow you to run the software locally for development and testing purposes.
 
@@ -74,11 +58,9 @@ My job assisting you with local setup of the app is done! You will speak to our 
 
 Collaboration between a designer and a web developer can be very powerful. Designers excel at creating amazing user experiences and have a keen eye for beauty and usability, while developers are experts in the underlying technology of the product.
 
-However, it's important to remember that **if a design for a feature exists, it's not a suggestion**. Your job as a web developer is to implement the design with as much fidelity as possible. While a developer might think they have a better way to arrange elements on the screen, the mocks and designs are the result of research and hard work. It's important to treat them with the respect they deserve.
+However, it's important to remember that **if a design for a feature exists, it's not a suggestion**. Your job as a web developer is to implement the design with as much fidelity as possible.
 
-It's crucial to use the readable texts designed for the user interface **verbatim**. If a design reads "Loading Doughnuts...", then "Loading _Your_ Doughnuts..." is incorrect. Attention to detail is critical!
-
-There are other constraints and requirements that must be followed, such as sticking to certain class names or keeping the structure of the HTML a certain way **to avoid breaking the CSS**.
+There are constraints and requirements that must be followed, such as sticking to certain class names or keeping the structure of the HTML a certain way **to avoid breaking the CSS**.
 
 Fortunately, you have [a very detailed mock](https://w-s5-challenge.herokuapp.com/) that you can load in your browser and inspect in detail, which will make your job much easier. And don't worry, **you don't have to write any CSS** because it's already been taken care of!
 
@@ -112,7 +94,7 @@ Here's the tricky thing: each learner has a short list of mentors, but the respo
 
 For fetching, just await the Axios request to Endpoint A, and then await the request to Endpoint B. (Optionally, you can use `Promise.all` to handle both requests. We do not need the data from request A in order to _start_ request B, so the requests can happen concurrently instead of back-to-back.)
 
-Once you have the payloads from Endpoints A and B stored inside variables, check that they match what you saw in Postman, and then **use your JavaScript skills to combine the two lists into a single data structure** that is comfortable to work with. Ideally, it would look something like this:
+Once you have the payloads from Endpoints A and B stored inside variables, check that they match what you saw in Postman, and then **use your JavaScript skills to combine the two lists into a single array** that is comfortable to work with. Ideally, it would look something like this:
 
 ```js
 [
@@ -127,11 +109,11 @@ Once you have the payloads from Endpoints A and B stored inside variables, check
 ]
 ```
 
-Once you have the data in the right shape, you can **create a component function** that takes a single learner in the format above as its argument, and returns a Learner Card. Then just loop over the data, generating cards as you go, and attaching them to the DOM.
+Once you have the data in the right shape, you can just loop over the array, and for each learner object, create a card element with its children, and append it to the DOM.
 
-Make sure that each element you create uses the **exact same class names and text contents** as those in the design! Also, render the learners **in the same order** as they arrive from Endpoint A.
+Make sure that each element you create uses **the same class names and text contents** as those in the design. Also, render the learners **in the same order** as they arrive from Endpoint A.
 
-As for [interactivity](https://w-s5-challenge.herokuapp.com/), when a card is selected, any other card becomes unselected. The newly selected card acquires a class of "selected", and the info message at the top of the page changes. When de-selecting a card, you must remove the class of "selected" from it, and change the message at the top of the page back to "No learner is selected".
+As for [interactivity](https://w-s5-challenge.herokuapp.com/), when a card is clicked (selected), any other card becomes de-selected. The newly selected card acquires a class of "selected", and the info message at the top of the page changes. When de-selecting a card, you must remove the class of "selected" from it, and change the message at the top of the page back to "No learner is selected".
 
 ❗ Only make changes to the `frontend/index.js` file.
 
